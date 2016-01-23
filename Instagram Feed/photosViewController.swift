@@ -23,6 +23,8 @@ class photosViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.rowHeight = 320
+        
         
         let clientId = "e05c462ebd86446ea48a5af73769b602"
         let url = NSURL(string:"https://api.instagram.com/v1/media/popular?client_id=\(clientId)")
@@ -38,9 +40,9 @@ class photosViewController: UIViewController, UITableViewDataSource, UITableView
                 if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            NSLog("data: \(responseDictionary)")
+                            NSLog("response: \(responseDictionary)")
                             
-                            self.photos = responseDictionary["images"] as? [NSDictionary]
+                            self.photos = responseDictionary["data"] as? [NSDictionary]
                             self.tableView.reloadData()
                     }
                 }
@@ -65,18 +67,24 @@ class photosViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+      
         
         let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
         let photo = photos![indexPath.row]
+//        
+//        let photoPath = photo.valueForKeyPath("images.standard_resolution.url") as! String
+        let photoPath = photo.valueForKeyPath("images.standard_resolution.url") as! String
+      
         
-        let photoPath = photo["images"] as! String
-        let baseUrl = "https://api.instagram.com/v1/media/popular?access_token=clientId"
-        
-        let imageUrl = NSURL(string: baseUrl + photoPath)
+        let imageUrl = NSURL(string: photoPath)
         
         cell.photoView.setImageWithURL(imageUrl!)
         
-        print("row\(indexPath.row)")
+// Print row attempt
+//        cell.textLabel!.text = "row\(indexPath.row)"
+//        print("row\(indexPath.row)")
+        
 
         return cell
         
