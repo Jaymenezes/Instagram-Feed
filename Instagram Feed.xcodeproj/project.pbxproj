@@ -14,6 +14,7 @@
 		CE481B771C51D79300C42790 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE481B761C51D79300C42790 /* Assets.xcassets */; };
 		CE481B7A1C51D79300C42790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE481B781C51D79300C42790 /* LaunchScreen.storyboard */; };
 		CE481B841C51E92900C42790 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE481B831C51E92900C42790 /* PhotoCell.swift */; };
+		CE6B4CAE1C5B120E00E9F026 /* PhotosDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6B4CAD1C5B120E00E9F026 /* PhotosDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,12 +22,13 @@
 		885173D0A7DF259AA2000C02 /* Pods_Instagram_Feed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram_Feed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE481B6C1C51D79300C42790 /* Instagram Feed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instagram Feed.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE481B6F1C51D79300C42790 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE481B711C51D79300C42790 /* photosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photosViewController.swift; sourceTree = "<group>"; };
+		CE481B711C51D79300C42790 /* photosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = photosViewController.swift; path = "Instagram Feed/photosViewController.swift"; sourceTree = "<group>"; };
 		CE481B741C51D79300C42790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE481B761C51D79300C42790 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE481B791C51D79300C42790 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE481B7B1C51D79300C42790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE481B831C51E92900C42790 /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		CE6B4CAD1C5B120E00E9F026 /* PhotosDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosDetailsViewController.swift; path = "Instagram Feed/PhotosDetailsViewController.swift"; sourceTree = "<group>"; };
 		CFC08CAEB5B0021B2E0BB567 /* Pods-Instagram Feed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram Feed.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram Feed/Pods-Instagram Feed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 		CE481B631C51D79300C42790 = {
 			isa = PBXGroup;
 			children = (
+				CE6B4CAF1C5B12B700E9F026 /* view controller */,
 				CE481B6E1C51D79300C42790 /* Instagram Feed */,
 				CE481B6D1C51D79300C42790 /* Products */,
 				0CA61E6FD1E1E72AB6CA671A /* Pods */,
@@ -81,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				CE481B6F1C51D79300C42790 /* AppDelegate.swift */,
-				CE481B711C51D79300C42790 /* photosViewController.swift */,
 				CE481B831C51E92900C42790 /* PhotoCell.swift */,
 				CE481B731C51D79300C42790 /* Main.storyboard */,
 				CE481B761C51D79300C42790 /* Assets.xcassets */,
@@ -89,6 +91,15 @@
 				CE481B7B1C51D79300C42790 /* Info.plist */,
 			);
 			path = "Instagram Feed";
+			sourceTree = "<group>";
+		};
+		CE6B4CAF1C5B12B700E9F026 /* view controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE481B711C51D79300C42790 /* photosViewController.swift */,
+				CE6B4CAD1C5B120E00E9F026 /* PhotosDetailsViewController.swift */,
+			);
+			name = "view controller";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 			files = (
 				CE481B721C51D79300C42790 /* photosViewController.swift in Sources */,
 				CE481B841C51E92900C42790 /* PhotoCell.swift in Sources */,
+				CE6B4CAE1C5B120E00E9F026 /* PhotosDetailsViewController.swift in Sources */,
 				CE481B701C51D79300C42790 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

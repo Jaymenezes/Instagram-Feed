@@ -16,9 +16,16 @@ class photosViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     
     var photos: [NSDictionary]?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let refreshControl = UIRefreshControl()
+        
+          refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        tableView.insertSubview(refreshControl, atIndex: 0) 
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -58,6 +65,16 @@ class photosViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
             
     }
+    
+    
+    func refreshControlAction(refreshControl: UIRefreshControl){
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+        print("Refresh Test")
+    }
+    
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if let photos = photos {
@@ -66,29 +83,59 @@ class photosViewController: UIViewController, UITableViewDataSource, UITableView
             return 0
         }
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
-      
         
         let cell = tableView.dequeueReusableCellWithIdentifier("PhotoCell", forIndexPath: indexPath) as! PhotoCell
         let photo = photos![indexPath.row]
-//        
-//        let photoPath = photo.valueForKeyPath("images.standard_resolution.url") as! String
+       
         let photoPath = photo.valueForKeyPath("images.standard_resolution.url") as! String
-      
-        
+
         let imageUrl = NSURL(string: photoPath)
         
         cell.photoView.setImageWithURL(imageUrl!)
         
-// Print row attempt
-//        cell.textLabel!.text = "row\(indexPath.row)"
-//        print("row\(indexPath.row)")
+        
+        func delay(delay:Double, closure:()->()) {
+            dispatch_after(
+                dispatch_time(
+                    DISPATCH_TIME_NOW,
+                    Int64(delay * Double(NSEC_PER_SEC))
+                ),
+                dispatch_get_main_queue(), closure)
+        }
+        
+       
         
 
         return cell
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("test")
+
+
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        
+        
+//        let indexPath = tableView.indexPathForCell(sender as! UITableViewCell)
+        let photo = photos![indexPath!.row]
+        let vc = segue.destinationViewController as! PhotosDetailsViewController
+        vc.photo = photo
+
+        
+        
+        
+        
+       
+        
+        
+        
+        
+    }
+
 
 
 }
